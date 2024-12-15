@@ -168,6 +168,9 @@
         <p>Este gráfico de barras muestra la concentración media de ozono medida en cada estación por año. El año se usa
             como filtro y la unidad de medida de la concentración de ozono se asume que es μg/m<sup>3</sup>.</p>
         <img src="6.png" alt="Captura 6" class="small-img" onclick="showOverlay(this)">
+        <p>Este gráfico de líneas muestra una serie temporal del ozono medido por las estaciones. Las estaciones se usan de filtro y la unidad de medida de la concentración de ozono se asume que es μg/m<sup>3</sup>.</p>
+        <h3>Capturas de pantalla del dashboard - Unión:</h3>
+        <img src="7.png" alt="Captura 7" class="small-img" onclick="showOverlay(this)">
     </section>
 
     <section>
@@ -183,7 +186,7 @@
         <p>Para detectar los outliers se establece un rango basado en una desviación típica de los datos de cada contaminante. Todos los valores que estén fuera de este rango se consideran outliers. Para el O<sub>3</sub>, el rango es [-0.6, 730.7], pero se establece en [0, 730.7]. Para el NO, el rango es [13, 7404]. Se asume que la unidad de medida es μg/m<sup>3</sup>.</p>
         <img src="12.png" alt="Captura 12" class="small-img" onclick="showOverlay(this)">
         <img src="13.png" alt="Captura 13" class="small-img" onclick="showOverlay(this)">
-        <p>En el caso del NO, no hay outliers muy ‘grandes’ (7404 o 3702), por lo que, tras un análisis visual, se hace un filtro para un rango de valores aceptados de [13, 1000].</p>
+        <p>En el caso del NO, hay outliers muy ‘grandes’ (7404 o 3702), por lo que, tras un análisis visual, se hace un filtro para un rango de valores aceptados de [13, 1000].</p>
         <img src="14.png" alt="Captura 14" class="small-img" onclick="showOverlay(this)">
         <h3>Capturas de pantalla de la fórmula:</h3>
         <p>Se emplea el valor máximo dentro del rango de valores establecido sin outliers.</p>
