@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto Big Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 130px;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #1c2c65;
+            padding: 15px 0;
+            text-align: center;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            position: fixed;
+            top: 120px;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            overflow: hidden;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+            transition: background-color 0.3s;
+        }
+
+        section {
+            margin-top: 0px;
+            padding: 30px;
+        }
+
+        h2 {
+            color: #1c2c65;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        table td {
+            vertical-align: top;
+        }
+
+        .small-img {
+            width: 30%;
+            height: auto;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .small-img:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 12px;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000; /* Encima de todo */
+        }
+
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        .overlay:active {
+            display: none; 
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>RETO BIG DATA Grupo 12</h1>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav>
+        <a href="#pregunta8">Pregunta 8</a>
+        <a href="#pregunta10">Pregunta 10</a>
+    </nav>
+
+    <!-- Contenido de las preguntas y respuestas -->
+    <section>
+        <h2 id="pregunta8">Pregunta 8 – Conexión y empezando con Tableau</h2>
+        <h3>Capturas de pantalla de la conexión:</h3>
+        <img src="1.png" alt="Captura 1" class="small-img" onclick="showOverlay(this)">
+        <img src="2.png" alt="Captura 2" class="small-img" onclick="showOverlay(this)">
+        <img src="3.png" alt="Captura 3" class="small-img" onclick="showOverlay(this)">
+        <h3>Capturas de pantalla del dashboard - índice:</h3>
+        <img src="4.png" alt="Captura 4" class="small-img" onclick="showOverlay(this)">
+        <h3>Capturas de pantalla del dashboard - gráficos:</h3>
+        <img src="5.png" alt="Captura 5" class="small-img" onclick="showOverlay(this)">
+        <p>Este gráfico de barras muestra la concentración media de ozono medida en cada estación por año. El año se usa
+            como filtro y la unidad de medida de la concentración de ozono se asume que es μg/m<sup>3</sup>.</p>
+        <img src="6.png" alt="Captura 6" class="small-img" onclick="showOverlay(this)">
+    </section>
+
+    <section>
+        <h2 id="pregunta10">Pregunta 10 – Limpieza, Procesado y Análisis</h2>
+        <h3>Capturas de pantalla del gráfico sin nulos:</h3>
+        <p>Para eliminar los valores nulos se hace un filtro.</p>
+        <img src="8.png" alt="Captura 8" class="small-img" onclick="showOverlay(this)">
+        <img src="9.png" alt="Captura 9" class="small-img" onclick="showOverlay(this)">
+        <p>Estos son los gráficos sin valores nulos.</p>
+        <img src="10.png" alt="Captura 10" class="small-img" onclick="showOverlay(this)">
+    </section>
+
+    <!-- Contenedor de la imagen ampliada -->
+    <div class="overlay" id="imageOverlay" onclick="hideOverlay()">
+        <img src="" alt="Imagen Ampliada" id="expandedImage">
+    </div>
+
+    <footer>
+        <p>Reto Big Data</p>
+        <p>Raquel Domínguez</p>
+    </footer>
+
+    <script>
+        // Función para mostrar la imagen ampliada
+        function showOverlay(image) {
+            const overlay = document.getElementById('imageOverlay');
+            const expandedImage = document.getElementById('expandedImage');
+            expandedImage.src = image.src; 
+            overlay.style.display = 'flex'; 
+        }
+
+        // Función para ocultar el overlay
+        function hideOverlay() {
+            const overlay = document.getElementById('imageOverlay');
+            overlay.style.display = 'none'; 
+        }
+    </script>
+
+</body>
+
+</html>
